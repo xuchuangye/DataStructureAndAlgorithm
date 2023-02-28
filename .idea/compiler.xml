@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ConsistentHash" />
+        <module name="HashTable" />
+        <module name="XOR-Operations" />
+        <module name="Manacher" />
+        <module name="Reservoir" />
+        <module name="SegmentTree" />
+        <module name="BFPRT" />
+        <module name="BloomFilter" />
+        <module name="SlidingWindow" />
+        <module name="DynamicProgramming" />
+        <module name="MonotoneStack" />
+        <module name="GreedyAlgorithms" />
+        <module name="DC3" />
+        <module name="Search" />
+        <module name="StrengthenHeap" />
+        <module name="Sort" />
+        <module name="Tree" />
+        <module name="AC_Automata" />
+        <module name="CatalanNumber" />
+        <module name="UnionSet" />
+        <module name="PrefixTree" />
+        <module name="IndexTree" />
+        <module name="OrderedTable" />
+        <module name="ResourceRestrictionTechniques" />
+        <module name="NetworkFlow" />
+        <module name="Recursion" />
+        <module name="FibonacciMatrixMultiplication" />
+        <module name="LinkedList" />
+        <module name="BitOperations" />
+        <module name="Stack" />
+        <module name="KMP" />
+        <module name="BitMap" />
+        <module name="MorrisTraversal" />
+        <module name="Skill" />
+        <module name="Graph" />
+        <module name="TimeComplexity" />
+        <module name="HuffmanCoding" />
+        <module name="Map" />
+        <module name="BigFactoryBrushProblemClass" />
+        <module name="Arithmetic" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AC_Automata" target="12" />
+      <module name="Algorithm" target="12" />
+      <module name="Arithmetic" target="12" />
+      <module name="BFPRT" target="12" />
+      <module name="BigFactoryBrushProblemClass" target="12" />
+      <module name="BitMap" target="12" />
+      <module name="BitOperations" target="12" />
+      <module name="BloomFilter" target="12" />
+      <module name="CatalanNumber" target="12" />
+      <module name="ConsistentHash" target="12" />
+      <module name="DataStructure" target="12" />
+      <module name="DC3" target="12" />
+      <module name="DynamicProgramming" target="12" />
+      <module name="FibonacciMatrixMultiplication" target="12" />
+      <module name="Graph" target="12" />
+      <module name="GreedyAlgorithms" target="12" />
+      <module name="HashFunction" target="12" />
+      <module name="HashTable" target="12" />
+      <module name="HuffmanCoding" target="12" />
+      <module name="IndexTree" target="12" />
+      <module name="KMP" target="12" />
+      <module name="LinkedList" target="12" />
+      <module name="Manacher" target="12" />
+      <module name="Map" target="12" />
+      <module name="MonotoneStack" target="12" />
+      <module name="MorrisTraversal" target="12" />
+      <module name="NetworkFlow" target="12" />
+      <module name="OrderedTable" target="12" />
+      <module name="PrefixTree" target="12" />
+      <module name="Recursion" target="12" />
+      <module name="Reservoir" target="12" />
+      <module name="ResourceRestrictionTechniques" target="12" />
+      <module name="Search" target="12" />
+      <module name="SegmentTree" target="12" />
+      <module name="Skill" target="12" />
+      <module name="SlidingWindow" target="12" />
+      <module name="Sort" target="12" />
+      <module name="Stack" target="12" />
+      <module name="StrengthenHeap" target="12" />
+      <module name="TimeComplexity" target="12" />
+      <module name="Tree" target="12" />
+      <module name="UnionSet" target="12" />
+      <module name="XOR-Operations" target="12" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

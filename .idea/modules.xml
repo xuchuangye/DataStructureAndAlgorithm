@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/AC_Automata/AC_Automata.iml" filepath="$PROJECT_DIR$/Algorithm/AC_Automata/AC_Automata.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/Algorithm.iml" filepath="$PROJECT_DIR$/Algorithm/Algorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/Arithmetic/Arithmetic.iml" filepath="$PROJECT_DIR$/Algorithm/Arithmetic/Arithmetic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/BFPRT/BFPRT.iml" filepath="$PROJECT_DIR$/Algorithm/BFPRT/BFPRT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BigFactoryBrushProblemClass/BigFactoryBrushProblemClass.iml" filepath="$PROJECT_DIR$/BigFactoryBrushProblemClass/BigFactoryBrushProblemClass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/BitMap/BitMap.iml" filepath="$PROJECT_DIR$/DataStructure/BitMap/BitMap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/BitOperations/BitOperations.iml" filepath="$PROJECT_DIR$/DataStructure/BitOperations/BitOperations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/HashFunction/BloomFilter/BloomFilter.iml" filepath="$PROJECT_DIR$/Algorithm/HashFunction/BloomFilter/BloomFilter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/CatalanNumber/CatalanNumber.iml" filepath="$PROJECT_DIR$/Algorithm/CatalanNumber/CatalanNumber.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/HashFunction/ConsistentHash/ConsistentHash.iml" filepath="$PROJECT_DIR$/Algorithm/HashFunction/ConsistentHash/ConsistentHash.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/DC3/DC3.iml" filepath="$PROJECT_DIR$/Algorithm/DC3/DC3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/DataStructure.iml" filepath="$PROJECT_DIR$/DataStructure/DataStructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructureAndAlgorithm.iml" filepath="$PROJECT_DIR$/DataStructureAndAlgorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/DynamicProgramming/DynamicProgramming.iml" filepath="$PROJECT_DIR$/Algorithm/DynamicProgramming/DynamicProgramming.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/FibonacciMatrixMultiplication/FibonacciMatrixMultiplication.iml" filepath="$PROJECT_DIR$/Algorithm/FibonacciMatrixMultiplication/FibonacciMatrixMultiplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/Graph/Graph.iml" filepath="$PROJECT_DIR$/DataStructure/Graph/Graph.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/GreedyAlgorithms/GreedyAlgorithms.iml" filepath="$PROJECT_DIR$/Algorithm/GreedyAlgorithms/GreedyAlgorithms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/HashFunction/HashFunction.iml" filepath="$PROJECT_DIR$/Algorithm/HashFunction/HashFunction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/HashTable/HashTable.iml" filepath="$PROJECT_DIR$/DataStructure/HashTable/HashTable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/HuffmanCoding/HuffmanCoding.iml" filepath="$PROJECT_DIR$/Algorithm/HuffmanCoding/HuffmanCoding.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/IndexTree/IndexTree.iml" filepath="$PROJECT_DIR$/DataStructure/IndexTree/IndexTree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/KMP/KMP.iml" filepath="$PROJECT_DIR$/Algorithm/KMP/KMP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/LinkedList/LinkedList.iml" filepath="$PROJECT_DIR$/DataStructure/LinkedList/LinkedList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/Manacher/Manacher.iml" filepath="$PROJECT_DIR$/Algorithm/Manacher/Manacher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/Map/Map.iml" filepath="$PROJECT_DIR$/DataStructure/Map/Map.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/MonotoneStack/MonotoneStack.iml" filepath="$PROJECT_DIR$/DataStructure/MonotoneStack/MonotoneStack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/MorrisTraversal/MorrisTraversal.iml" filepath="$PROJECT_DIR$/Algorithm/MorrisTraversal/MorrisTraversal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/NetworkFlow/NetworkFlow.iml" filepath="$PROJECT_DIR$/Algorithm/NetworkFlow/NetworkFlow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/OrderedTable/OrderedTable.iml" filepath="$PROJECT_DIR$/DataStructure/OrderedTable/OrderedTable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/PrefixTree/PrefixTree.iml" filepath="$PROJECT_DIR$/DataStructure/PrefixTree/PrefixTree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/Recursion/Recursion.iml" filepath="$PROJECT_DIR$/Algorithm/Recursion/Recursion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/Reservoir/Reservoir.iml" filepath="$PROJECT_DIR$/Algorithm/Reservoir/Reservoir.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ResourceRestrictionTechniques/ResourceRestrictionTechniques.iml" filepath="$PROJECT_DIR$/ResourceRestrictionTechniques/ResourceRestrictionTechniques.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/Search/Search.iml" filepath="$PROJECT_DIR$/Algorithm/Search/Search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/SegmentTree/SegmentTree.iml" filepath="$PROJECT_DIR$/DataStructure/SegmentTree/SegmentTree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/Skill/Skill.iml" filepath="$PROJECT_DIR$/Algorithm/Skill/Skill.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/SlidingWindow/SlidingWindow.iml" filepath="$PROJECT_DIR$/DataStructure/SlidingWindow/SlidingWindow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/Sort/Sort.iml" filepath="$PROJECT_DIR$/Algorithm/Sort/Sort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/Stack/Stack.iml" filepath="$PROJECT_DIR$/DataStructure/Stack/Stack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/StrengthenHeap/StrengthenHeap.iml" filepath="$PROJECT_DIR$/DataStructure/StrengthenHeap/StrengthenHeap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TimeComplexity/TimeComplexity.iml" filepath="$PROJECT_DIR$/TimeComplexity/TimeComplexity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/Tree/Tree.iml" filepath="$PROJECT_DIR$/DataStructure/Tree/Tree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructure/UnionSet/UnionSet.iml" filepath="$PROJECT_DIR$/DataStructure/UnionSet/UnionSet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Algorithm/XOR-Operations/XOR-Operations.iml" filepath="$PROJECT_DIR$/Algorithm/XOR-Operations/XOR-Operations.iml" />
+    </modules>
+  </component>
+</project>
