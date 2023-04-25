@@ -10,10 +10,4 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>StrengthenHeap</artifactId>
-
-    <properties>
-        <maven.compiler.source>12</maven.compiler.source>
-        <maven.compiler.target>12</maven.compiler.target>
-    </properties>
-
 </project>

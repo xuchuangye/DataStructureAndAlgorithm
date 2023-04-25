@@ -49,7 +49,7 @@
         <module name="Arithmetic" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="8">
       <module name="AC_Automata" target="12" />
       <module name="Algorithm" target="12" />
       <module name="Arithmetic" target="12" />
@@ -61,6 +61,7 @@
       <module name="CatalanNumber" target="12" />
       <module name="ConsistentHash" target="12" />
       <module name="DataStructure" target="12" />
+      <module name="DataStructureAndAlgorithm" target="12" />
       <module name="DC3" target="12" />
       <module name="DynamicProgramming" target="12" />
       <module name="FibonacciMatrixMultiplication" target="12" />
@@ -94,5 +95,10 @@
       <module name="UnionSet" target="12" />
       <module name="XOR-Operations" target="12" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="DataStructureAndAlgorithm" options="-parameters" />
+    </option>
   </component>
 </project>

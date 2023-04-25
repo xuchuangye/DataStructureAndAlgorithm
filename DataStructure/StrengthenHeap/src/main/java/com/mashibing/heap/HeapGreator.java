@@ -167,37 +167,55 @@ public class HeapGreator<T> {
 	}
 
 	/**
-	 * 当前元素向下调整
+	 * 当前元素向下调整（下沉）
 	 *
 	 * @param index
 	 */
 	public void heapify(int index) {
 		//当前节点的左子节点
 		int left = 2 * index + 1;
+		//如果有左孩子节点
 		while (left < heapSize) {
 			//判断当前节点的左子节点和右子节点的权值大小，返回权值较大的索引
-			int maxIndex = left + 1 < heapSize && comparator.compare(heap.get(left + 1), heap.get(left)) < 0 ? (left + 1) : left;
+			int largestIndex = 0;
+			int right = left + 1;
+			//如果右孩子节点不越界
+			if (right < heapSize
+					&&
+					//如果右孩子节点的值大于左孩子节点的值
+					comparator.compare(heap.get(right), heap.get(left)) > 0) {
+				//那么最大的子节点就是右孩子节点
+				largestIndex = right;
+			}
+			//否则，没有右孩子节点或者右孩子节点的值小于左孩子节点的值
+			else {
+				//那么最大的子节点就是左孩子节点
+				largestIndex = left;
+			}
 			//取出权值较大的子节点，再和父节点的权值进行比较，返回权值较大的索引
-			maxIndex = comparator.compare(heap.get(maxIndex), heap.get(index)) < 0 ? maxIndex : index;
-			//判断最终获取的较大值是否是当前节点的索引，如果是，直接返回
-			if (maxIndex == index) {
+			largestIndex = comparator.compare(heap.get(largestIndex), heap.get(index)) < 0 ? largestIndex : index;
+			//判断最终获取的较大值是否是当前父节点的索引，如果是，直接返回，不需要往下沉
+			if (largestIndex == index) {
 				break;
 			}
 			//如果不是，证明当前节点不是整棵子树中的最大的节点，当前节点索引需要和整棵子树的最大值索引进行交换
-			swap(maxIndex, index);
-			//当前节点来到maxIndex
-			index = maxIndex;
-			//继续进行下一层的判断，从左子节点开始
+			swap(largestIndex, index);
+			//当前节点来到较大子节点的位置
+			index = largestIndex;
+			//继续进行是否下沉的判断，从左子节点开始
 			left = 2 * index + 1;
 		}
 	}
 
 	/**
-	 * 当前元素向上调整
+	 * 当前元素向上调整（上浮）
 	 *
 	 * @param index
 	 */
 	public void heapInsert(int index) {
+		//while退出循环的条件
+		//1.当前节点是整棵树的根节点
+		//2.当前节点的值干不过父节点的值
 		while (comparator.compare(heap.get(index), heap.get((index - 1) / 2)) < 0) {
 			swap(index, (index - 1) / 2);
 			index = (index - 1) / 2;

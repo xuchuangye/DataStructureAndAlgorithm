@@ -37,6 +37,8 @@ public class HeapSorting {
 		String end = simpleDateFormat.format(dateEnd);
 		System.out.printf("堆排序后的时间：\n%s\n", end);
 
+		//测试是否排序出错
+
 		//System.out.println(Arrays.toString(arr));
 	}
 

@@ -22,7 +22,7 @@ import java.util.Stack;
 public class QuickSorting {
 	public static void main(String[] args) throws InterruptedException {
 		//测试时间
-		int arrayMaxSize = 100000000;
+		/*int arrayMaxSize = 100000000;
 		int maxValue = 10000;
 		int testTime = 1;
 		int[] array = SortCommonUtils.generateRandomArray(arrayMaxSize, maxValue);
@@ -67,12 +67,12 @@ public class QuickSorting {
 		}
 		end = System.currentTimeMillis();
 		System.out.println("测试结束！");
-		System.out.println("quickSort()所花费的时间：" + (end - start));
+		System.out.println("quickSort()所花费的时间：" + (end - start));*/
 
 		//splitNumber(arr);
 		//splitNumber_(arr);
 
-		/*//测试错误
+		//测试错误
 		//测试次数
 		int testTime = 10000000;
 		//数组长度
@@ -88,7 +88,7 @@ public class QuickSorting {
 			int[] arr = SortCommonUtils.copyArray(array);
 
 			//自己实现的排序方式
-			quickSortingNoRecursionWithList(array);
+			quickSortingNoRecursionWithStack(array);
 			//系统提供的排序方式
 			SortCommonUtils.sort(arr);
 
@@ -102,7 +102,7 @@ public class QuickSorting {
 			}
 
 		}
-		System.out.println(success ? "测试成功" : "测试失败");*/
+		System.out.println(success ? "测试成功" : "测试失败");
 	}
 
 	/**
@@ -159,8 +159,8 @@ public class QuickSorting {
 		}*/
 		//如果l == r，必须l += 1，r -= 1，否则会出现栈溢出问题，因为没有可以退出递归的条件，所以会进入死递归
 		if (l == r) {
-			l ++;
-			r --;
+			l++;
+			r--;
 		}
 
 		//向左递归
@@ -259,9 +259,9 @@ public class QuickSorting {
 
 		//等于区域
 		int[] equals = partition(arr, left, right);
-		//小于区域递归
+		//小于区域递归，小于区的左边就是left，等于区的左边界 - 1就是小于区的有边界
 		process(arr, left, equals[0] - 1);
-		//大于区域递归
+		//大于区域递归，大于区的左边界就是等于区的右边界 + 1，大于区的右边界就是right
 		process(arr, equals[1] + 1, right);
 	}
 
@@ -293,21 +293,45 @@ public class QuickSorting {
 		if (arr == null || arr.length < 2) {
 			return;
 		}
-		Stack<EqualRegion> equalRegions = new Stack<>();
-		equalRegions.push(new EqualRegion(0, arr.length - 1));
+		/*equalRegions.push(new EqualRegion(0, arr.length - 1));
 		while (!equalRegions.isEmpty()) {
 			EqualRegion curEqualRegion = equalRegions.pop();
 			//等于区的左侧边界和右侧边界
-			int[] equals = partition(arr, curEqualRegion.left, curEqualRegion.right);
+			int[] equalArea = partition(arr, curEqualRegion.left, curEqualRegion.right);
 			//等于区的左侧边界大于当前任务的最左边，说明有小于区
-			if (equals[0] > curEqualRegion.left) {
-				equalRegions.push(new EqualRegion(curEqualRegion.left, equals[0] - 1));
+			if (equalArea[0] > curEqualRegion.left) {
+				equalRegions.push(new EqualRegion(curEqualRegion.left, equalArea[0] - 1));
 			}
 			//等于区的右侧边界小于当前任务的最右边，说明有大于区
-			if (equals[1] < curEqualRegion.right) {
-				equalRegions.push(new EqualRegion(equals[1] + 1, curEqualRegion.right));
+			if (equalArea[1] < curEqualRegion.right) {
+				equalRegions.push(new EqualRegion(equalArea[1] + 1, curEqualRegion.right));
+			}
+		}*/
+		int N = arr.length;
+		swap(arr, (int) (Math.random() * (N)), N - 1);
+		int[] equalArea = partition(arr, 0, N - 1);
+		int equalL = equalArea[0];
+		int equalR = equalArea[1];
+
+		Stack<EqualRegion> stack = new Stack<>();
+		stack.push(new EqualRegion(0, equalL - 1));
+		stack.push(new EqualRegion(equalR + 1, N - 1));
+		while (!stack.isEmpty()) {
+			EqualRegion region = stack.pop();
+
+			if (region.left < region.right) {
+				swap(arr, region.left + (int) (Math.random() * (region.right - region.left + 1)), region.right);
+
+				equalArea = partition(arr, region.left, region.right);
+				equalL = equalArea[0];
+				equalR = equalArea[1];
+
+				stack.push(new EqualRegion(region.left, equalL - 1));
+				stack.push(new EqualRegion(equalR + 1, region.right));
 			}
 		}
+
+
 	}
 
 	/**
@@ -337,51 +361,66 @@ public class QuickSorting {
 	}
 
 	/**
+	 * arr[L ... R]荷兰国旗的问题的划分，以arr[R]作划分值
+	 * < arr[R] 在左边， = arr[R] 在中间 > arr[R] 在右边
 	 * 从左侧边界left到右侧边界right上，划分小于区、等于区、大于区
 	 *
-	 * @param arr   原始数组
-	 * @param left  左侧边界
-	 * @param right 右侧边界
+	 * @param arr 原始数组
+	 * @param L   左侧边界
+	 * @param R   右侧边界
 	 * @return 返回等于区的左侧边界和等于区的右侧边界的数组
 	 */
-	public static int[] partition(int[] arr, int left, int right) {
-		if (left > right) {
+	public static int[] partition(int[] arr, int L, int R) {
+		if (L > R) {
+			//无效边界
 			return new int[]{-1, -1};
 		}
-		if (left == right) {
-			return new int[]{left, right};
+		if (L == R) {
+			//以arr[]
+			return new int[]{L, R};
 		}
-		//小于区的起始索引，也就是右边界
-		int lessRight = left - 1;
-		//大于区的起始索引，也就是左边界
-		int greaterLeft = right;
+		//小于区的右边界
+		int lessRight = L - 1;
+		//大于区的左边界，让arr[R]不参与计算
+		int greaterLeft = R;
 		//当前索引，从left开始
-		int index = left;
-		//当前索引 == 大于区的最左边时退出循环
+		int index = L;
+		//当前索引不能和大于区的左边界撞上，如果当前索引 == 大于区的最左边界时退出循环
 		while (index < greaterLeft) {
 			//以数组的最后一个元素为大于区和小于区的划分点
 			//如果当前索引的值小于right索引上的值
-			if (arr[index] < arr[right]) {
+			if (arr[index] < arr[R]) {
 				//当前索引的值和小于区的下一个索引上的值做交换
-				swap(arr, lessRight + 1, index);
+				//swap(arr, lessRight + 1, index);
 				//小于区的右边界继续往右扩
-				lessRight++;
+				//lessRight++;
 				//继续当前索引的下一个索引
-				index++;
+				//index++;
+				swap(arr, ++lessRight, index++);
 			}
 			//如果当前索引的值大于right索引上的值
-			else if (arr[index] > arr[right]) {
+			else if (arr[index] > arr[R]) {
 				//当前索引的值和大于区的前一个索引上的值做交换
-				swap(arr, greaterLeft - 1, index);
+				//swap(arr, greaterLeft - 1, index);
 				//大于区的左边界继续往左扩
-				greaterLeft--;
+				//greaterLeft--;
+				swap(arr, --greaterLeft, index);
 			}
-			//如果当前索引的值等于数组的最后一个元素的值，直接跳过，进行下一个
+			//如果当前索引的值 == arr[R]划分值，直接跳过，进行下一个
 			else {
 				index++;
 			}
 		}
-		swap(arr, greaterLeft, right);
+
+		//当while循环结束时，在L ... R - 1的范围内
+		// < arr[R]的都在左边
+		// = arr[R]的都在中间
+		// > arr[R]的都在右边
+		//最后将arr[R]的值和大于区的左边界位置的值进行交换
+		swap(arr, greaterLeft, R);
+		//返回等于区的左边界和有边界
+		//小于区的右边界 + 1 就是等于区的左边界
+		//最后arr[R]和大于区的左边界交换的位置就是等于区的右边界
 		return new int[]{lessRight + 1, greaterLeft};
 	}
 

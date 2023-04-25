@@ -19,17 +19,17 @@ package com.mashibing.day12;
  * 2 == 2'，那么直接返回就是整体的第4小
  * <2>.
  * 2 > 2'，那么有可能是整体第4小的有：
- * arr1[]中的1 -> 大于arr2[]中的1' 2' 3'，本身有序的，肯定小于2
- * arr1[]中的2 -> 大于arr2[]中的1' 2' 不大于3'，本身有序的，肯定大于arr1[]中的1
- * arr2[]中的3' -> 大于arr1[]中的1 2 不大于3，本身有序的，肯定大于arr2[]中的1' 2'
- * arr2[]中的4' -> 小于arr1[]中所有的数，本身有序的，肯定大于arr2[]中的1' 2' 3'
+ * arr1[]中的1 -> 大于arr2[]中的1' 2' 3'，而且本身有序的，那么肯定小于2
+ * arr1[]中的2 -> 只大于arr2[]中的1' 2'，而且本身有序的，那么肯定大于arr1[]中的1
+ * arr2[]中的3' -> 大于arr1[]中的1， 而且本身有序的，那么肯定大于arr2[]中的1' 2'
+ * arr2[]中的4' -> 小于arr1[]中所有的数，而且本身有序的，那么肯定大于arr2[]中的1' 2' 3'
  * 继续递归下去，f(arr1[]中的1和2, arr2[]中的3'和4')，找到其中的第2小
  * <3>.
  * 2 < 2'，那么有可能是整体第4小的有：
- * arr1[]中的3 -> 大于arr2[]中的1'，本身有序的，肯定大于arr[]1中的1 2
- * arr1[]中的4 -> 小于arr2[]中所有的数，本身有序的，肯定大于arr1[]中的1 2 3
- * arr2[]中的1' -> 大于arr1[]中的1 2 3，本身有序的，肯定小于arr2[]中的2'
- * arr2[]中的2' -> 大于arr1[]中的1 2，本身有序的，肯定大于arr2[]中的1'
+ * arr1[]中的3 -> 大于arr2[]中的1'，而且本身有序的，那么肯定大于arr[]1中的1 2
+ * arr1[]中的4 -> 小于arr2[]中所有的数，而且本身有序的，那么肯定大于arr1[]中的1 2 3
+ * arr2[]中的1' -> 大于arr1[]中的1 2 3，而且本身有序的，那么肯定小于arr2[]中的2'
+ * arr2[]中的2' -> 大于arr1[]中的1 2，而且本身有序的，那么肯定大于arr2[]中的1'
  * 继续递归下去，f(arr1[]中的3和4, arr2[]中的1'和2')，找到其中的第2小
  * (2)
  * 小情况2：这两个等长的数组的长度都是奇数
@@ -40,11 +40,11 @@ package com.mashibing.day12;
  * 3 == 3，那么直接返回就是整体的第5小
  * <2>.
  * 3 > 3'，那么有可能是整体第5小的有：
- * arr1[]中的1 -> 大于arr2[]中的1' 2' 3' 4'，小于5'，
- * arr1[]中的2 -> 大于arr2[]中的1' 2' 3'，小于4'，本身有序的，肯定大于arr1[]中的1
- * arr2[]中的3' -> 大于arr1[]中的1 2，小于3，本身有序的，肯定大于arr2[]中的1' 2'
- * arr2[]中的4' -> 大于arr1[]中的1，小于2，本身有序的，肯定大于arr2[]中的1' 2' 3'
- * arr2[]中的5' -> 小于arr1[]中所有的数，本身有序的，肯定大于arr2[]中的1' 2' 3' 4'
+ * arr1[]中的1 -> 大于arr2[]中的1' 2' 3' 4'
+ * arr1[]中的2 -> 大于arr2[]中的1' 2' 3'，而且本身有序的，那么肯定大于arr1[]中的1
+ * arr2[]中的3' -> 大于arr1[]中的1 2，而且本身有序的，那么肯定大于arr2[]中的1' 2'
+ * arr2[]中的4' -> 大于arr1[]中的1，而且本身有序的，那么肯定大于arr2[]中的1' 2' 3'
+ * arr2[]中的5' -> 小于arr1[]中所有的数，而且本身有序的，那么肯定大于arr2[]中的1' 2' 3' 4'
  * 判断arr1[]中的2是否 <= arr2[]中的3'
  * a.如果arr1[]中的2 <= arr2[]中的3'，那么arr1[]中的2肯定是整体的第5小
  * b.如果arr1[]中的2 > arr2[]中的3'，那么arr2[]中的3'肯定不是整体的第5小，因为只大于arr1[]中的1和arr2[]中的1' 2'
@@ -86,12 +86,15 @@ package com.mashibing.day12;
  */
 public class Code02_FindKthMinNumber {
 	public static void main(String[] args) {
-		int[] arr1 = {4, 9, 10, 20, 15};
-		int[] arr2 = {40, 9, 100, 20, 25};
+		int[] arr1 = {4, 9, 10, 15, 20};
+		int[] arr2 = {9, 20, 25, 40, 100};
+		//4 9 9 10 15 20 20 25 40 100
 		int kthNum1 = (int) findKthNum1(arr1, arr2);
-		int kthNum2 = findKthNum2(arr1, arr2, 2);
-		System.out.println(kthNum1);
-		System.out.println(kthNum2);
+		int kthNum2 = findKthNum2(arr1, arr2, 5);
+		int kthNum3 = findKthNum3(arr1, arr2, 5);
+		System.out.println(kthNum1);//15
+		System.out.println(kthNum2);//9
+		System.out.println(kthNum3);//9
 	}
 
 	/**
@@ -177,29 +180,31 @@ public class Code02_FindKthMinNumber {
 			//因为是索引的原因，所以kth需要 - 1
 			return getUpMedian1(longs, 0, kth - 1, shorts, 0, kth - 1);
 		}
+		//short < kth <= long
+		//10 < kth <= 17
+		//假设kth == 15
+		//arr1[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+		//arr2[] = {1',2',3',4',5',6',7',8',9',10'}
+		//arr1[5] >= arr2[10']
+		if (longs[kth - s - 1] >= shorts[s - 1]) {
+			return longs[kth - s - 1];
+		}
+
 		//long < kth <= (short + long)
 		//17 < kth <= 27
 		if (kth > l && kth <= (l + s)) {
 			//arr1[] = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
 			//arr2[] = 1',2',3',4',5',6',7',8',9',10'
+			//l = 17, s = 10, k = 23
+			//arr2[6'] >= arr1[17]
+			if (shorts[kth - l - 1] >= longs[l - 1]) {
+				return shorts[kth - l - 1];
+			}
 			//arr1[13] >= arr2[10']
 			if (longs[kth - s - 1] >= shorts[s - 1]) {
 				return longs[kth - s - 1];
 			}
-			//arr2[6'] >= arr1[17]
-			if (shorts[kth - l - 1] > longs[l - 1]) {
-				return shorts[kth - l - 1];
-			}
 			return getUpMedian1(longs, kth - s, l - 1, shorts, kth - l, s - 1);
-		}
-		//short < kth <= long
-		//10 < kth <= 17
-		//假设kth == 15
-		//arr1[] = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
-		//arr2[] = 1',2',3',4',5',6',7',8',9',10'
-		//arr1[5] >= arr2[10']
-		if (longs[kth - s - 1] >= shorts[s - 1]) {
-			return longs[kth - s - 1];
 		}
 		//arr1[] = {6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
 		//arr2[] = 1',2',3',4',5',6',7',8',9',10'
@@ -219,9 +224,131 @@ public class Code02_FindKthMinNumber {
 	 * @param B  B[]
 	 * @param s2 B[]左边界
 	 * @param e2 B[]右边界
-	 * @return 返回两个数组合并之后整体
+	 * @return 返回两个数组合并之后整体最小的
 	 */
 	public static int getUpMedian1(int[] A, int s1, int e1, int[] B, int s2, int e2) {
+		int mid1 = 0;
+		int mid2 = 0;
+		while (s1 < e1) {
+			mid1 = s1 + ((e1 - s1) >> 1);
+			mid2 = s2 + ((e2 - s2) >> 1);
+			//如果两个数组的中位数相等，那么必定是两个数组合并之后的整体的中位数
+			if (A[mid1] == B[mid2]) {
+				return A[mid1];
+			}
+			//判断数组的长度是否是偶数
+			//如果数组的长度是奇数
+			if (((e1 - s1 + 1) & 1) == 1) {
+				//A[] = {1, 2, 3, 4, 5}
+				//B[] = {1',2',3',4',5'}
+				//A[mid1] != B[mid2]
+				if (A[mid1] > B[mid2]) {
+					//A[] = {1, 2, 3, 4, 5}
+					//B[] = {1',2',3',4',5'}
+					if (B[mid2] >= A[mid1 - 1]) {
+						return B[mid2];
+					}
+					//A[]的s1不动，e1移动到mid1 - 1的位置
+					e1 = mid1 - 1;
+					//B[]的e2不动，s2移动到mid2 + 1的位置
+					s2 = mid2 + 1;
+				}
+				//A[mid1] < B[mid2]
+				else {
+					if (A[mid1] >= B[mid2 - 1]) {
+						return A[mid1];
+					}
+					//A[]的e1不动，s1移动到mid1 + 1的位置
+					s1 = mid1 + 1;
+					//B[]的s2不动，e2移动到mid2 - 1的位置
+					e2 = mid2 - 1;
+				}
+			}
+			//如果数组的长度是偶数
+			else {
+				//A[] = {1, 2, 3, 4}
+				//B[] = {1',2',3',4'}
+				//A[mid1] != B[mid2]
+				if (A[mid1] > B[mid2]) {
+					//A[]的s1不动，e1移动到mid1的位置
+					e1 = mid1;
+					//B[]的e2不动，s2移动到mid2 + 1的位置
+					s2 = mid2 + 1;
+				} else {
+					//A[]的e1不动，s1移动到mid1 + 1的位置
+					s1 = mid1 + 1;
+					//B[]的s2不动，e2移动到mid2的位置
+					e2 = mid2;
+				}
+			}
+		}
+		//当while退出循环时，两个数组都已经遍历到最开始的索引，那么就是A[s1]，B[s2]
+		//而且是求两个数组的中位数，也就是第几小，所以会比较A[s1]和B[s2]的最小值
+		return Math.min(A[s1], B[s2]);
+	}
+
+
+	public static int findKthNum3(int[] arr1, int[] arr2, int kth) {
+		if (arr1 == null || arr2 == null || arr1.length == 0 || arr2.length == 0 || kth <= 0) {
+			return -1;
+		}
+		int[] longs = arr1.length >= arr2.length ? arr1 : arr2;
+		int[] shorts = arr1.length < arr2.length ? arr1 : arr2;
+		//arr1[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+		int l = longs.length;//17
+		//arr2[] = {1',2',3',4',5',6',7',8',9',10'}
+		int s = shorts.length;//10
+		//kth >= short
+		//kth <= 10
+		if (kth <= s) {
+			//因为是索引的原因，所以kth需要 - 1
+			return getUpMedian2(longs, 0, kth - 1, shorts, 0, kth - 1);
+		}
+		//long < kth <= (short + long)
+		//17 < kth <= 27
+		if (kth > l && kth <= (l + s)) {
+			//arr1[] = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
+			//arr2[] = 1',2',3',4',5',6',7',8',9',10'
+			//arr1[13] >= arr2[10']
+			if (longs[kth - s - 1] >= shorts[s - 1]) {
+				return longs[kth - s - 1];
+			}
+			//arr2[6'] >= arr1[17]
+			if (shorts[kth - l - 1] > longs[l - 1]) {
+				return shorts[kth - l - 1];
+			}
+			return getUpMedian2(longs, kth - s, l - 1, shorts, kth - l, s - 1);
+		}
+		//short < kth <= long
+		//10 < kth <= 17
+		//假设kth == 15
+		//arr1[] = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+		//arr2[] = 1',2',3',4',5',6',7',8',9',10'
+		//arr1[5] >= arr2[10']
+		if (longs[kth - s - 1] >= shorts[s - 1]) {
+			return longs[kth - s - 1];
+		}
+		//arr1[] = {6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+		//arr2[] = 1',2',3',4',5',6',7',8',9',10'
+		return getUpMedian2(longs, kth - s, kth - 1, shorts, 0, s - 1);
+	}
+
+	/**
+	 * A[] = [s1 ... e1]
+	 * B[] = [s2 ... e2]
+	 * 两个数组的长度是相等的
+	 * <p>
+	 * 时间复杂度：o(logN)
+	 *
+	 * @param A
+	 * @param s1
+	 * @param e1
+	 * @param B
+	 * @param s2
+	 * @param e2
+	 * @return
+	 */
+	public static int getUpMedian2(int[] A, int s1, int e1, int[] B, int s2, int e2) {
 		int mid1 = 0;
 		int mid2 = 0;
 		while (s1 < e1) {
